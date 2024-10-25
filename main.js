@@ -72,7 +72,7 @@ form.addEventListener('submit', function (e) {
     const marriedvalue = married.checked
     const petvalue = pet.value
 
-    if (firstname2value === ""){
+    if (firstname2value === "") {
         firstname2value = undefined
 
     }
@@ -87,11 +87,13 @@ form.addEventListener('submit', function (e) {
         pet: petvalue
 
     }
-    if (validatefields(firstname,lastname,pet))
+    if (validatefields(firstname, lastname, pet))
     array.push(newperson)
     console.log(array)
     tablebody.innerHTML = ""
     rendertable()
+
+    form.reset()
 })
 rendertable()
 function rendertable() {
@@ -99,14 +101,14 @@ function rendertable() {
         const tr = document.createElement('tr')
         tablebody.appendChild(tr)
         const lastname = document.createElement('td')
-        
+
         tr.appendChild(lastname)
         lastname.innerHTML = person.lastname
 
         const firstname = document.createElement('td')
         tr.appendChild(firstname)
         firstname.innerHTML = person.firstname1
-        
+
 
 
         if (person.firstname2 === undefined) {
@@ -147,49 +149,48 @@ function rendertable() {
         })
 
 
-        
+
 
     }
 
 }
-function validatefields(lastname,firstname,pet){
+function validatefields(lastname, firstname, pet) {
 
     let valtozo = form.querySelectorAll('.error')
-    for(const error of valtozo){
+    for (const error of valtozo) {
         error.innerHTML = ""
     }
-    innerHTML= ""
+    innerHTML = ""
     let result = true
-    if(lastname.value === ""){
+    if (lastname.value === "") {
         const par = lastname.parentElement
         const error = par.querySelector(".error")
         error.innerHTML = "kötelező vezetéknév"
         result = false
 
-        
+
     }
-    if(firstname.value === ""){
+    if (firstname.value === "") {
         const par = firstname.parentElement
         const error = par.querySelector(".error")
         error.innerHTML = "kötelező keresztnév"
         result = false
 
-        
+
     }
-    if(pet.value === ""){
+    if (pet.value === "") {
         const par = pet.parentElement
         const error = par.querySelector(".error")
         error.innerHTML = "kötelező háziállat"
         result = false
 
-        
+
     }
     return result
-            
+
 }
 
-function CreateTablecell(element,inner,parent)
-{
+function CreateTablecell(element, inner, parent) {
     const elem = document.createElement(element)
     tr.appendChild(elem)
     elem.innerHTML = inner
