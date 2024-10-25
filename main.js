@@ -27,8 +27,12 @@ let array = [
         pet: 'macska'
     },
 ]
-const table = document.createElement('table')
-document.body.appendChild(table)
+createHTMLElement('table','persontable',document.body)
+CreateHTMLElementWithParentId('thead','personthead','persontable')
+CreateHTMLElementWithParentId('tbody','persontbody','persontable')
+
+
+
 
 const tablehead = document.createElement('thead')
 table.appendChild(tablehead)
@@ -54,8 +58,7 @@ th2.colSpan = 2
 th3.innerHTML = "Házas-e"
 th4.innerHTML = "Háziállat"
 
-const tablebody = document.createElement('tbody')
-table.appendChild(tablebody)
+CreateHTMLElementWithParentId('tbody','persontbody','persontable')
 
 const form = document.getElementById('form')
 form.addEventListener('submit', function (e) {
@@ -154,6 +157,13 @@ function rendertable() {
     }
 
 }
+/**
+ * 
+ * @param {*} lastname 
+ * @param {*} firstname 
+ * @param {*} pet 
+ * @returns 
+ */
 function validatefields(lastname, firstname, pet) {
 
     let valtozo = form.querySelectorAll('.error')
@@ -183,17 +193,10 @@ function validatefields(lastname, firstname, pet) {
         const error = par.querySelector(".error")
         error.innerHTML = "kötelező háziállat"
         result = false
+        
 
 
     }
     return result
-
-}
-
-function CreateTablecell(element, inner, parent) {
-    const elem = document.createElement(element)
-    tr.appendChild(elem)
-    elem.innerHTML = inner
-    parent.appendChild(elem)
 
 }
