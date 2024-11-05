@@ -40,3 +40,47 @@ function CreateHTMLElementWithParentId(tag,id,parentid){
         createHTMLElement(tag,id,element)
     }
 }
+
+/**
+ * 
+ * @param {*} lastname 
+ * @param {*} firstname 
+ * @param {*} pet 
+ * @returns 
+ */
+function validatefields(lastname, firstname, pet) {
+
+    let valtozo = form.querySelectorAll('.error')
+    for (const error of valtozo) {
+        error.innerHTML = ""
+    }
+    innerHTML = ""
+    let result = true
+    if (lastname.value === "") {
+        const par = lastname.parentElement
+        const error = par.querySelector(".error")
+        error.innerHTML = "kötelező vezetéknév"
+        result = false
+
+
+    }
+    if (firstname.value === "") {
+        const par = firstname.parentElement
+        const error = par.querySelector(".error")
+        error.innerHTML = "kötelező keresztnév"
+        result = false
+
+
+    }
+    if (pet.value === "") {
+        const par = pet.parentElement
+        const error = par.querySelector(".error")
+        error.innerHTML = "kötelező háziállat"
+        result = false
+        
+
+
+    }
+    return result
+
+}

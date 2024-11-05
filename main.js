@@ -27,20 +27,25 @@ let array = [
         pet: 'macska'
     },
 ]
-createHTMLElement('table','persontable',document.body)
-CreateHTMLElementWithParentId('thead','personthead','persontable')
-CreateHTMLElementWithParentId('tbody','persontbody','persontable')
+createHTMLElement('table', 'persontable', document.body);
+CreateHTMLElementWithParentId('thead', 'personthead', 'persontable');
+CreateHTMLElementWithParentId('tbody', 'persontbody', 'persontable');
+
 
 //előző előtti órai munka..fejléc cella létrehozása automatizálva
 
-CellaLetrehozo("th", "Vezetéknév", tr );
-const th_firstname = CellaLetrehozo("th", "Vezetéknév", tr);
+const thead = document.getElementById('personthead');
+const tr = document.createElement('tr');
+thead.appendChild(tr);
+
+CellaLetrehozo("th", "Vezetéknév", tr);
+const th_firstname = CellaLetrehozo("th", "Keresztnév", tr);
 CellaLetrehozo("th", "Házas-e?", tr);
-CellaLetrehozo("th", "Háziállat", tr)
+CellaLetrehozo("th", "Háziállat", tr);
 
-th_firstname.colSpan = 2; // 2 es szélesség
+th_firstname.colSpan = 2; // 2-es szélesség
 
-
+const tablebody = document.getElementById('persontbody');
 
 
 const form = document.getElementById('form')
@@ -140,46 +145,4 @@ function rendertable() {
     }
 
 }
-/**
- * 
- * @param {*} lastname 
- * @param {*} firstname 
- * @param {*} pet 
- * @returns 
- */
-function validatefields(lastname, firstname, pet) {
 
-    let valtozo = form.querySelectorAll('.error')
-    for (const error of valtozo) {
-        error.innerHTML = ""
-    }
-    innerHTML = ""
-    let result = true
-    if (lastname.value === "") {
-        const par = lastname.parentElement
-        const error = par.querySelector(".error")
-        error.innerHTML = "kötelező vezetéknév"
-        result = false
-
-
-    }
-    if (firstname.value === "") {
-        const par = firstname.parentElement
-        const error = par.querySelector(".error")
-        error.innerHTML = "kötelező keresztnév"
-        result = false
-
-
-    }
-    if (pet.value === "") {
-        const par = pet.parentElement
-        const error = par.querySelector(".error")
-        error.innerHTML = "kötelező háziállat"
-        result = false
-        
-
-
-    }
-    return result
-
-}
