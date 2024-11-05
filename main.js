@@ -31,34 +31,17 @@ createHTMLElement('table','persontable',document.body)
 CreateHTMLElementWithParentId('thead','personthead','persontable')
 CreateHTMLElementWithParentId('tbody','persontbody','persontable')
 
+//előző előtti órai munka..fejléc cella létrehozása automatizálva
+
+CellaLetrehozo("th", "Vezetéknév", tr );
+const th_firstname = CellaLetrehozo("th", "Vezetéknév", tr);
+CellaLetrehozo("th", "Házas-e?", tr);
+CellaLetrehozo("th", "Háziállat", tr)
+
+th_firstname.colSpan = 2; // 2 es szélesség
 
 
 
-const tablehead = document.createElement('thead')
-table.appendChild(tablehead)
-
-const tableheadrow = document.createElement('tr')
-tablehead.appendChild(tableheadrow)
-
-const th = document.createElement('th')
-tableheadrow.appendChild(th)
-
-const th2 = document.createElement('th')
-tableheadrow.appendChild(th2)
-
-const th3 = document.createElement('th')
-tableheadrow.appendChild(th3)
-
-const th4 = document.createElement('th')
-tableheadrow.appendChild(th4)
-
-th.innerHTML = "Veznev"
-th2.innerHTML = "Kernev"
-th2.colSpan = 2
-th3.innerHTML = "Házas-e"
-th4.innerHTML = "Háziállat"
-
-CreateHTMLElementWithParentId('tbody','persontbody','persontable')
 
 const form = document.getElementById('form')
 form.addEventListener('submit', function (e) {
