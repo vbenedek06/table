@@ -9,6 +9,7 @@ function CreateTablecell(element, inner, parent) {
     parent.appendChild(elem)
     elem.innerHTML = inner
     return elem
+    //változtatás
 
 }
 
