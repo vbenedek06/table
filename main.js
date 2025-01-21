@@ -43,9 +43,27 @@ table.appendChild(tablebody)
 
 for(const person of array) 
 {
-    const tr = document.createElement("tr")
-    const lastname = document.createElement("td")
-    tr.appendChild(lastname)
+    const tr = document.createElement('tr')
+    const lastname = document.createElement('td')
     tablebody.appendChild(tr)
+    tr.appendChild(lastname)
     lastname.innerHTML = person.lastname
+    const firstname = document.createElement('td')
+    tablebody.appendChild(tr)
+    tr.appendChild(firstname)
+    firstname.innerHTML = person.firstname1
+    
+    
+    tablebody.appendChild(tr)
+    
+    if(person.firstname2===undefined){
+        firstname.colSpan = 2
+    }
+    else{
+        const firstname2 = document.createElement('td')
+        firstname2.innerHTML = person.firstname2
+        tr.appendChild(firstname2)
+    }
+    
+
 }
